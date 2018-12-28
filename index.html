@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>canvas教程</title> 
+<style> 
+div
+{
+	border:4px dashed gray;
+	padding:10px 40px; 
+	background:#eecccc;
+	width:300px;
+	border-radius:20px;
+	box-shadow:10px 10px 10px black;
+}
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+
+<div>border-radius 属性允许您为元素添加圆角边框！ </div>
+<script type="text/javascript" color="223,144,255" opacity="0.7" zindex="-2" count="199" src="canvas-nest.min.js"></script>
+<canvas id="c_n4" width="1920" height="377" style="position: fixed; top: 0px; left: 0px; z-index: -2; opacity: 0.7;"></canvas>
+<br>
+<canvas id="cnvs1" style="border:3px double lightgray;"></canvas>
+<canvas id="cnvs2" style="border:3px dotted lightgray;"></canvas>
+<canvas id="cnvs3" style="border:3px dashed lightgray;"></canvas>
+<canvas id="cnvs4" style="border:3px solid lightgray;"></canvas>
+<canvas id="cnvs5" style="border:3px solid lightgray;"></canvas>
+<script>
+
+var canvas1=document.getElementById("cnvs1").getContext("2d");//平面图形画布
+var canvas2=document.getElementById("cnvs2").getContext("2d");//平面图形画布
+var canvas3=document.getElementById("cnvs3").getContext("2d");//平面图形画布
+var canvas4=document.getElementById("cnvs4").getContext("2d");//平面图形画布
+var canvas5=document.getElementById("cnvs5").getContext("2d");//平面图形画布
+
+canvas1.fillStyle="#eecccc";
+canvas1.fillRect(0,0,300,150);
+
+canvas2.fillStyle="#eecccc";
+canvas2.strokeRect(0,0,150,150);
+canvas2.fillRect(150,0,75,75);
+canvas2.fillStyle="#bbcccc";
+canvas2.fillRect(150,75,75,75);
+canvas2.fillStyle="#eeffaa";
+canvas2.fillRect(225,0,75,75);
+canvas2.fillStyle="#eeaaaa";
+canvas2.fillRect(225,75,75,75);
+canvas2.clearRect(200,55,50,50);//橡皮擦
+
+canvas3.fillStyle="#eecccc";
+canvas3.moveTo(0,0);
+canvas3.lineTo(150,150);
+canvas3.moveTo(150,150);
+canvas3.lineTo(300,0);
+canvas3.stroke();
+
+canvas4.fillStyle="#eecccc";
+canvas4.arc(50, 50, 50, 0,Math.PI * 2, false);
+canvas4.fill();
+canvas4.arc(150, 50, 50, 0,Math.PI , false);
+canvas4.fill();
+canvas4.arc(250, 50, 50, 0,Math.PI , true);
+canvas4.fill();
+
+var n = 0;
+ var dx = 50;
+ var dy = 50;
+ var s = 50;
+ canvas5.beginPath();
+ canvas5.fillStyle = '#eecccc';
+ canvas5.strokeStyle = 'black';
+ var x = Math.sin(0);
+ var y = Math.cos(0);
+ var dig = Math.PI / 15 * 7;
+ for (var i = 0; i < 30; i++) {
+ var x = Math.sin(i * dig);
+ var y = Math.cos(i * dig);
+ canvas5.lineTo(dx + x * s, dy + y * s);
+ console.log( x ,y )
+ }
+ canvas5.closePath();
+ canvas5.fill();
+ canvas5.stroke();
+
+ canvas5.fillStyle = '#eecccc';
+ var g1 = canvas5.createLinearGradient(0, 0, 0, 150);
+ g1.addColorStop(0, '#eeaaaa'); 
+ g1.addColorStop(1, '#ccccaa');
+ canvas5.fillStyle = g1;
+ canvas5.fillRect(100, 0, 250, 150);
+ // g1.addColorStop(0, '#eecccc');
+ // g1.addColorStop(1, '#ffcccc');
+ // canvas5.fillStyle = g1;
+ // canvas5.fillRect(100, 50, 250,50);
+ // g1.addColorStop(0, '#ffcccc');
+ // g1.addColorStop(1, '#ffaaaa');
+ // canvas5.fillStyle = g1;
+ // canvas5.fillRect(100, 100, 250,50);
+
+</script>
+</body>
+</html>
